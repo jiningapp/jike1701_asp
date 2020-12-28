@@ -1,6 +1,0 @@
-git branch srj
-git branch
-git checkout srj
-git add .
-git commit -m "the new branch"
-git push -u origin srj
