@@ -24,17 +24,32 @@
     <remote-repository>
       <option name="id" value="D:\androidstudio\sdk\extras\m2repository" />
       <option name="name" value="D:\androidstudio\sdk\extras\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../sdk/extras/m2repository" />
+      <option name="url" value="file:/$USER_HOME$/sdk/extras/m2repository" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="D:\androidstudio\sdk\extras\google\m2repository" />
       <option name="name" value="D:\androidstudio\sdk\extras\google\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../sdk/extras/google/m2repository" />
+      <option name="url" value="file:/$USER_HOME$/sdk/extras/google/m2repository" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="D:\androidstudio\sdk\extras\android\m2repository" />
       <option name="name" value="D:\androidstudio\sdk\extras\android\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../sdk/extras/android/m2repository" />
+      <option name="url" value="file:/$USER_HOME$/sdk/extras/android/m2repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\androidstudio\sdk\extras\m2repository" />
+      <option name="name" value="D:\androidstudio\sdk\extras\m2repository" />
+      <option name="url" value="file:/D:/androidstudio/sdk/extras/m2repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\androidstudio\sdk\extras\google\m2repository" />
+      <option name="name" value="D:\androidstudio\sdk\extras\google\m2repository" />
+      <option name="url" value="file:/D:/androidstudio/sdk/extras/google/m2repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\androidstudio\sdk\extras\android\m2repository" />
+      <option name="name" value="D:\androidstudio\sdk\extras\android\m2repository" />
+      <option name="url" value="file:/D:/androidstudio/sdk/extras/android/m2repository" />
     </remote-repository>
   </component>
 </project>
