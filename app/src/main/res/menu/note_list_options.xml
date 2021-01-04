@@ -21,11 +21,11 @@
         android:id="@+id/move"
         android:title="@string/menu_move"
         android:icon="@drawable/menu_move"
-        app:showAsAction="always|withText" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/delete"
         android:title="@string/menu_delete"
         android:icon="@drawable/menu_delete"
-        app:showAsAction="always|withText" />
+        app:showAsAction="ifRoom" />
 </menu>

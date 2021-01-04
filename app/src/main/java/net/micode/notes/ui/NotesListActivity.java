@@ -51,6 +51,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -64,6 +65,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.micode.notes.R;
 import net.micode.notes.data.Notes;
@@ -81,9 +84,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.util.HashSet;
 
-public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
+public class NotesListActivity extends AppCompatActivity implements OnClickListener, OnItemLongClickListener {
     private static final int FOLDER_NOTE_LIST_QUERY_TOKEN = 0;
 
     private static final int FOLDER_LIST_QUERY_TOKEN      = 1;
@@ -109,8 +113,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private ListView mNotesListView;
 
     private Button mAddNewNote;
-    private Button mMenuSet;
-
+    /*private Button mMenuSet;*/
+    private Toolbar toolbar;
     private boolean mDispatch;
 
     private int mOriginY;
@@ -144,14 +148,29 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_list);//加载便签列表（布局文件）
-        initResources();//初始化资源
 
+        setContentView(R.layout.note_list);//加载便签列表（布局文件）
+        toolbar = findViewById(R.id.toolbar);
+
+        initResources();//初始化资源
+        /*getOverflowMenu();*/
         /**
          * Insert an introduction when user firstly use this application
          */
         setAppInfoFromRawRes();
     }
+
+   /* private void getOverflowMenu() {
+        try {
+            ViewConfiguration mconfig = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if(menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(mconfig, false);
+            }
+        } catch (Exception ex) {
+        }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -212,6 +231,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     @Override
     protected void onStart() {
         super.onStart();
+
+        setSupportActionBar(toolbar);
         startAsyncNotesListQuery();
     }
 
@@ -229,7 +250,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         mAddNewNote = (Button) findViewById(R.id.btn_new_note);
         mAddNewNote.setOnClickListener(this);
         mAddNewNote.setOnTouchListener(new NewNoteOnTouchListener());
-        mMenuSet = (Button) findViewById(R.id.btn_set);
+        /*mMenuSet = (Button) findViewById(R.id.btn_set);*/
         mDispatch = false;
         mDispatchY = 0;
         mOriginY = 0;
@@ -260,7 +281,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             mNotesListAdapter.setChoiceMode(true);
             mNotesListView.setLongClickable(false);
             mAddNewNote.setVisibility(View.GONE);
-            mMenuSet.setVisibility(View.GONE);
+            /*mMenuSet.setVisibility(View.GONE);*/
 
             View customView = LayoutInflater.from(NotesListActivity.this).inflate(
                     R.layout.note_list_dropdown_menu, null);
@@ -319,7 +340,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 //            closeOptionsMenu();
 //            mNotesListView.invalidate();
             mAddNewNote.setVisibility(View.VISIBLE);
-            mMenuSet.setVisibility(View.VISIBLE);
+            /*mMenuSet.setVisibility(View.VISIBLE);*/
             
             
             
@@ -580,7 +601,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         if (data.getId() == Notes.ID_CALL_RECORD_FOLDER) {
             mState = ListEditState.CALL_RECORD_FOLDER;
             mAddNewNote.setVisibility(View.GONE);
-            mMenuSet.setVisibility(View.GONE);
+            /*mMenuSet.setVisibility(View.GONE);*/
         } else {
             mState = ListEditState.SUB_FOLDER;
         }
@@ -614,8 +635,10 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    //展示新建文件夹的对话框
     private void showCreateOrModifyFolderDialog(final boolean create) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+        /*settingDialog.setInverseBackgroundForced(true);*/
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_text, null);
         final EditText etName = (EditText) view.findViewById(R.id.et_foler_name);
         showSoftInput();
@@ -714,7 +737,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 mCurrentFolderId = Notes.ID_ROOT_FOLDER;
                 mState = ListEditState.NOTE_LIST;
                 mAddNewNote.setVisibility(View.VISIBLE);
-                mMenuSet.setVisibility(View.VISIBLE);
+                /*mMenuSet.setVisibility(View.VISIBLE);*/
                 mTitleBar.setVisibility(View.GONE);
                 startAsyncNotesListQuery();
                 break;
@@ -776,7 +799,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 openFolder(mFocusNoteDataItem);
                 break;
             case MENU_FOLDER_DELETE:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                 builder.setTitle(getString(R.string.alert_title_delete));
                 builder.setIcon(android.R.drawable.ic_dialog_alert);
                 builder.setMessage(getString(R.string.alert_message_delete_folder));
@@ -805,7 +828,10 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         if (mState == ListEditState.NOTE_LIST) {
             getMenuInflater().inflate(R.menu.note_list, menu);
             // set sync or sync_cancel
-        }  else if (mState == ListEditState.CALL_RECORD_FOLDER) {
+        }  else if (mState == ListEditState.SUB_FOLDER) {
+            getMenuInflater().inflate(R.menu.sub_folder, menu);
+        }
+        else if (mState == ListEditState.CALL_RECORD_FOLDER) {
             getMenuInflater().inflate(R.menu.call_record_folder, menu);
         } else {
             Log.e(TAG, "Wrong state:" + mState);
@@ -852,13 +878,13 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }
         return true;
     }
-
+    //搜索便签功能
     @Override
     public boolean onSearchRequested() {
         startSearch(null, false, null /* appData */, false);
         return true;
     }
-
+  //导出文本功能（暂时无法使用）
     @SuppressLint("StaticFieldLeak")
     private void exportNoteToText() {
         final BackupUtils backup = BackupUtils.getInstance(NotesListActivity.this);
@@ -988,7 +1014,13 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         return false;
     }
     
-    public void OnOpenMenu(View view) {
+    /*public void OnOpenMenu(View view) {
 		openOptionsMenu();
-	}
+	}*/
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.note_list, menu);
+
+        return true;
+    }
 }

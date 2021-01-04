@@ -46,7 +46,7 @@
     <string name="menu_move">移动到文件夹</string>
     <string name="menu_select_title">选中了 %d 项</string>
     <string name="menu_select_none">没有选中项，操作无效</string>
-    <string name="menu_select_all">全选</string>
+    <string name="menu_select_all">选择全部</string>
     <string name="menu_deselect_all">取消全选</string>
     <string name="menu_font_size">文字大小</string>
     <string name="menu_font_small">小</string>
@@ -122,7 +122,7 @@
     <string name="preferences_bg_random_appear_title">新建便签背景颜色随机</string>
     <string name="button_delete">删除</string>
     <string name="call_record_folder_name">通话便签</string>
-    <string name="hint_foler_name">请输入名称</string>
+    <string name="hint_foler_name">请输入文件夹名称</string>
     <string name="search_label">正在搜索便签</string>
     <string name="search_hint">搜索便签</string>
     <string name="search_setting_description">便签中的文字</string>

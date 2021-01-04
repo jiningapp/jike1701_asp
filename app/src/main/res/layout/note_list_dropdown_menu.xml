@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/selection_menu"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="57dp"
+        android:layout_width="110dp"
         android:layout_height="match_parent"
         android:divider="?android:attr/listDividerAlertDialog"
         android:gravity="left|center_vertical"
