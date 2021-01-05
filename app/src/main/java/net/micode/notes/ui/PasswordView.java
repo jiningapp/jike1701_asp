@@ -1,3 +1,5 @@
+//
+
 package net.micode.notes.ui;
 
 import android.text.Editable;

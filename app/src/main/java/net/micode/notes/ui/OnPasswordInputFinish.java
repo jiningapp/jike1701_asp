@@ -1,3 +1,6 @@
+//
+
+
 package net.micode.notes.ui;
 
 public interface OnPasswordInputFinish {
