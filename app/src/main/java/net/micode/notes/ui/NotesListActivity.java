@@ -148,9 +148,10 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.note_list);//加载便签列表（布局文件）
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setLogo(R.drawable.icon_dami);
+
 
         initResources();//初始化资源
         /*getOverflowMenu();*/
@@ -376,18 +377,18 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
 
             switch (item.getItemId()) {
                 case R.id.delete:
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NotesListActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NotesListActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                     builder.setTitle(getString(R.string.alert_title_delete));//删除便签提示
                     builder.setIcon(android.R.drawable.ic_dialog_alert);
                     builder.setMessage(getString(R.string.alert_message_delete_notes,
                                              mNotesListAdapter.getSelectedCount()));
-                    /*builder.setPositiveButton(android.R.string.ok,
+                    builder.setPositiveButton(android.R.string.ok,
                                              new DialogInterface.OnClickListener() {
                                                  public void onClick(DialogInterface dialog,
                                                          int which) {
                                                      batchDelete();
                                                  }
-                                             });*/
+                                             });
                     builder.setNegativeButton(android.R.string.cancel, null);
                     builder.show();
                     break;
@@ -524,7 +525,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
         this.startActivityForResult(intent, REQUEST_CODE_NEW_NODE);
     }
 
-    /*private void batchDelete() {
+    private void batchDelete() {
         new AsyncTask<Void, Void, HashSet<AppWidgetAttribute>>() {
             protected HashSet<AppWidgetAttribute> doInBackground(Void... unused) {
                 HashSet<AppWidgetAttribute> widgets = mNotesListAdapter.getSelectedWidget();
@@ -559,7 +560,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
                 mModeCallBack.finishActionMode();
             }
         }.execute();
-    }*/
+    }
 
     private void deleteFolder(long folderId) {
         if (folderId == Notes.ID_ROOT_FOLDER) {
@@ -750,7 +751,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
         }
     }
 
-    /*private void updateWidget(int appWidgetId, int appWidgetType) {
+    private void updateWidget(int appWidgetId, int appWidgetType) {
         Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         if (appWidgetType == Notes.TYPE_WIDGET_2X) {
             intent.setClass(this, NoteWidgetProvider_2x.class);
@@ -767,7 +768,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
 
         sendBroadcast(intent);
         setResult(RESULT_OK, intent);
-    }*/
+    }
 
     private final OnCreateContextMenuListener mFolderOnCreateContextMenuListener = new OnCreateContextMenuListener() {
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -798,6 +799,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
             case MENU_FOLDER_VIEW:
                 openFolder(mFocusNoteDataItem);
                 break;
+                //确认是否删除所选便签
             case MENU_FOLDER_DELETE:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                 builder.setTitle(getString(R.string.alert_title_delete));
@@ -895,6 +897,7 @@ public class NotesListActivity extends AppCompatActivity implements OnClickListe
                 return backup.exportToText();
             }
 
+            //导出至SD卡功能
             @Override
             protected void onPostExecute(Integer result) {
                 if (result == BackupUtils.STATE_SD_CARD_UNMOUONTED) {

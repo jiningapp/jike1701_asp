@@ -29,5 +29,6 @@
         android:layout_height="match_parent"
         android:divider="?android:attr/listDividerAlertDialog"
         android:gravity="left|center_vertical"
+        android:textColor="#C11212"
         android:singleLine="true" />
 </LinearLayout>
