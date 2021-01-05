@@ -17,4 +17,5 @@
 <!--#335b5b5b-->
 <resources>
     <color name="user_query_highlight">#33FB0404</color>
+    <color name="colorPrimary">#008577</color>
 </resources>

@@ -53,6 +53,7 @@
     <string name="menu_font_normal">正常</string>
     <string name="menu_font_large">大</string>
     <string name="menu_font_super">超大</string>
+    <string name="start_record">开始录音</string>
     <string name="menu_list_mode">事件清单模式</string>
     <string name="menu_normal_mode">退出清单模式</string>
     <string name="menu_folder_view">查看文件夹</string>
