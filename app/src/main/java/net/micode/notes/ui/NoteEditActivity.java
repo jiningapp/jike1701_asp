@@ -27,14 +27,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,6 +49,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -52,12 +59,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import net.micode.notes.R;
 import net.micode.notes.data.Notes;
 import net.micode.notes.data.Notes.TextNote;
 import net.micode.notes.model.WorkingNote;
 import net.micode.notes.model.WorkingNote.NoteSettingChangedListener;
 import net.micode.notes.tool.DataUtils;
+import net.micode.notes.tool.GlideImageEngine;
 import net.micode.notes.tool.ResourceParser;
 import net.micode.notes.tool.ResourceParser.TextAppearanceResources;
 import net.micode.notes.ui.DateTimePickerDialog.OnDateTimeSetListener;
@@ -65,12 +74,21 @@ import net.micode.notes.ui.NoteEditText.OnTextViewChangeListener;
 import net.micode.notes.widget.NoteWidgetProvider_2x;
 import net.micode.notes.widget.NoteWidgetProvider_4x;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.micode.notes.tool.ContentToSpannableString;
+import net.micode.notes.tool.GlideImageEngine;
+import net.micode.notes.tool.UriToPathUtil;
+import android.media.MediaRecorder;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
 
 public class NoteEditActivity extends Activity implements OnClickListener,
         NoteSettingChangedListener, OnTextViewChangeListener {
@@ -129,12 +147,15 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private View mFontSizeSelector;
 
     private EditText mNoteEditor;
+    private EditText editText;//用于添加图片功能
 
     private View mNoteEditorPanel;
 
     private WorkingNote mWorkingNote;
 
     private SharedPreferences mSharedPrefs;
+
+
     private int mFontSizeId;
 
     private static final String PREFERENCE_FONT_SIZE = "pref_font_size";
@@ -148,6 +169,14 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     private String mUserQuery;
     private Pattern mPattern;
+    private GlideImageEngine glideImageEngine;
+    private int REQUEST_CODE_CHOOSE = 23;// 图库选取图片标识请求码
+    private List<Uri> mSelected;
+    private Button mAddpic;
+    private Button mAddvoice;
+
+    private MediaRecorder mediaRecorder = null;
+    private boolean isStart = false;      //判断是否开始录音
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +188,38 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             return;
         }
         initResources();
+
+        mAddpic = findViewById(R.id.button_note_new_picture);
+        mAddpic.setOnClickListener(this);
+
+        /*final Button mAddpic = findViewById(R.id.button_note_new_picture);
+        mAddpic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //跳转到 图片选择界面 向当前editText中插入图片
+                callGallery();
+            }
+        });
+
+        final Button mAddvoice = findViewById(R.id.button_note_new_voice);
+        mAddvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isStart){
+                    startRecord();
+                    mAddvoice.setText("停止录音");
+                    isStart = true;
+                    editText.append("\n");
+                }else{
+                    stopRecord();
+                    mAddvoice.setText("开始录音");
+                    isStart = false;
+                    //这是手机emoji上的一个图标
+                    editText.append("\uD83C\uDFA4");
+                    editText.append("\n");
+                }
+            }
+        });*/
     }
 
     /**
@@ -274,6 +335,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         if (mWorkingNote.getCheckListMode() == TextNote.MODE_CHECK_LIST) {
             switchToListMode(mWorkingNote.getContent());
         } else {
+            /*SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
+            mNoteEditor.append(spannableString);*/
             mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
             mNoteEditor.setSelection(mNoteEditor.getText().length());
         }
@@ -374,6 +437,10 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         mNoteEditor = (EditText) findViewById(R.id.note_edit_view);
         mNoteEditorPanel = findViewById(R.id.sv_note_edit);
         mNoteBgColorSelector = findViewById(R.id.note_bg_color_selector);
+
+
+
+
         for (int id : sBgSelectorBtnsMap.keySet()) {
             ImageView iv = (ImageView) findViewById(id);
             iv.setOnClickListener(this);
@@ -406,6 +473,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         clearSettingState();
     }
 
+
+
     private void updateWidget() {
         Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         if (mWorkingNote.getWidgetType() == Notes.TYPE_WIDGET_2X) {
@@ -427,10 +496,13 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     public void onClick(View v) {
         int id = v.getId();
+        //用于测试的写法
+        if(id ==  R.id.button_note_new_picture){
+            createNewNote();
+        }
         if (id == R.id.btn_set_bg_color) {
             mNoteBgColorSelector.setVisibility(View.VISIBLE);
-            findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(
-                    -                    View.VISIBLE);
+            findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(View.VISIBLE);
         } else if (sBgSelectorBtnsMap.containsKey(id)) {
             findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(
                     View.GONE);
@@ -776,6 +848,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 mWorkingNote.setWorkingText(mWorkingNote.getContent().replace(TAG_UNCHECKED + " ",
                         ""));
             }
+            /*SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
+            mNoteEditor.append(spannableString);*/
             mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
             mEditTextList.setVisibility(View.GONE);
             mNoteEditor.setVisibility(View.VISIBLE);
@@ -875,4 +949,99 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     public void OnOpenMenu(View view) {
 		openOptionsMenu();
 	}
+
+    /*private void callGallery(){
+        glideImageEngine = new GlideImageEngine();
+
+        Matisse.from(NoteEditActivity.this)
+                .choose(MimeType.ofAll())
+                .countable(true)
+                .maxSelectable(9)
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                .thumbnailScale(0.85f)
+                .imageEngine(glideImageEngine)
+                .forResult(REQUEST_CODE_CHOOSE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode == RESULT_OK){
+            if(data != null){
+                if(requestCode == 1){
+
+                }else if(requestCode == REQUEST_CODE_CHOOSE){
+                    mSelected = Matisse.obtainResult(data);
+                    Uri nSelected = mSelected.get(0);
+
+                    //用Uri的string来构造spanStr，不知道能不能获得图片
+                    //  ## +  string +  ##  来标识图片  <img src=''>
+
+                    //SpannableString spanStr = new SpannableString(nSelected.toString());
+                    SpannableString spanStr = new SpannableString("<img src='" + nSelected.toString() + "'/>");
+                    Log.d("图片Uri",nSelected.toString());
+                    String path = UriToPathUtil.getRealFilePath(this,nSelected);
+                    Log.d("图片Path",path);
+
+                    try{
+
+                        //根据Uri 获得 drawable资源
+                        Drawable drawable = Drawable.createFromStream(this.getContentResolver().openInputStream(nSelected),null);
+                        drawable.setBounds(0,0,2 * drawable.getIntrinsicWidth(),2 * drawable.getIntrinsicHeight());
+                        //BitmapDrawable bd = (BitmapDrawable) drawable;
+                        //Bitmap bp = bd.getBitmap();
+                        //bp.setDensity(160);
+                        ImageSpan span = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
+                        spanStr.setSpan(span,0,spanStr.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        Log.d("spanString：",spanStr.toString());
+                        int cursor = editText.getSelectionStart();
+                        editText.getText().insert(cursor, spanStr);
+                    }catch (Exception FileNotFoundException){
+                        Log.d("异常","无法根据Uri找到图片资源");
+                    }
+                    //Drawable drawable = NoteNewActivity.this.getResources().getDrawable(nSelected);
+                }
+            }
+        }
+    }
+
+    private void startRecord(){
+        if(mediaRecorder == null){
+            File dir = new File(Environment.getExternalStorageDirectory(),"sounds");
+            if (!dir.exists()){
+                dir.mkdir();
+            }
+            File soundFile = new File(dir, System.currentTimeMillis() + ".amr");
+            if(!soundFile.exists()){
+                try {
+                    soundFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            mediaRecorder = new MediaRecorder();
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_WB);
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+            mediaRecorder.setOutputFile(soundFile.getAbsolutePath());
+
+            editText.append("<voice src='" + soundFile.getAbsolutePath() + "'/>");
+
+            try {
+                mediaRecorder.prepare();
+                mediaRecorder.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    private void stopRecord(){
+        if (mediaRecorder != null){
+            mediaRecorder.stop();
+            mediaRecorder.release();
+            mediaRecorder = null;
+        }
+    }*/
 }

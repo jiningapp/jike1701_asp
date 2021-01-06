@@ -41,7 +41,17 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "NotesDatabaseHelper";
 
     private static NotesDatabaseHelper mInstance;
-
+    //代码表示建表语句：CREAT TABLE note(
+    // _id INTEGER PRIMARY KEY,
+    // parent_id INTEGER NOT NULL DEFAULT 0,
+    // alert_date INTEGER NOT NULL DEFAULT 0,
+    // bg_color_id INTEGER NOT NULL DEFAULT 0,
+    // created_date INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+    // has_attachment INTEGER NOT NULL DEFAULT 0,
+    // modified_date INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+    // notes_count INTEGER NOT NULL DEFAULT 0,
+    // snippet TEXT NOT NULL DEFAULT '',
+    // ....)
     private static final String CREATE_NOTE_TABLE_SQL =
         "CREATE TABLE " + TABLE.NOTE + "(" +
             NoteColumns.ID + " INTEGER PRIMARY KEY," +
@@ -62,7 +72,13 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
             NoteColumns.GTASK_ID + " TEXT NOT NULL DEFAULT ''," +
             NoteColumns.VERSION + " INTEGER NOT NULL DEFAULT 0" +
         ")";
-
+    //创建data表：CREAT TABLE data(
+    // _id INTEGER PRIMARY KEY,
+    // mime_type TEXT NOT NULL,
+    // ...
+    // content TEXT NOT NULL DEFAULT '',这行存储是便签内容的那项
+    // ...
+    // )
     private static final String CREATE_DATA_TABLE_SQL =
         "CREATE TABLE " + TABLE.DATA + "(" +
             DataColumns.ID + " INTEGER PRIMARY KEY," +
@@ -77,7 +93,7 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
             DataColumns.DATA4 + " TEXT NOT NULL DEFAULT ''," +
             DataColumns.DATA5 + " TEXT NOT NULL DEFAULT ''" +
         ")";
-
+    //如果data表没有note_id的index，那么就创建它的index
     private static final String CREATE_DATA_NOTE_ID_INDEX_SQL =
         "CREATE INDEX IF NOT EXISTS note_id_index ON " +
         TABLE.DATA + "(" + DataColumns.NOTE_ID + ");";

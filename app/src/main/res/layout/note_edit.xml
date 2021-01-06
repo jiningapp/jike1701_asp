@@ -262,7 +262,8 @@ minLines="12"  设置当前页面最少显示12行-->
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
         android:background="@drawable/add_photo"
-        app:backgroundTint="@color/colorPrimary" />
+        app:backgroundTint="@color/colorPrimary"
+        />
 
     //录音按钮
     <Button
