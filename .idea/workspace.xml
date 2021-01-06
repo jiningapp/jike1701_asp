@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0efc1372-9f39-45e2-85bd-91c011d76ed9" name="Default Changelist" comment="">
+    <list default="true" id="963bc8a5-39a1-47a1-94dc-59b785feba20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmAlertActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmAlertActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmInitReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmInitReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePicker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePickerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePickerDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DropdownMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DropdownMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/FoldersListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/FoldersListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteItemData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteItemData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesPreferenceActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesPreferenceActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/OnPasswordInputFinish.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/OnPasswordInputFinish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/PasswordView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/PasswordView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/account_dialog_title.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/account_dialog_title.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_account_text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_account_text.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/current_password_head.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/current_password_head.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout2.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,115 +29,46 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/FoldersListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#3022#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#53322#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditText.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#9204#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteItemData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#7413#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#39208#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#5652#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#6296#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesPreferenceActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#15441#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/OnPasswordInputFinish.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/account_dialog_title.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="19">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_account_text.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/current_password_head.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/PasswordView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout2.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="57">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -161,22 +81,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmAlertActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmInitReceiver.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmReceiver.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePicker.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePickerDialog.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DropdownMenu.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/FoldersListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditText.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteItemData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListItem.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesPreferenceActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/OnPasswordInputFinish.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/PasswordView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/account_dialog_title.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_account_text.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/current_password_head.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout2.xml" />
       </list>
     </option>
   </component>
@@ -191,9 +100,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -263,36 +170,7 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="net" type="462c0819:PsiDirectoryNode" />
-              <item name="micode" type="462c0819:PsiDirectoryNode" />
-              <item name="notes" type="462c0819:PsiDirectoryNode" />
-              <item name="gtask" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jike1701_asp" type="1abcf292:AndroidViewProjectNode" />
-              <item name="jike1701_asp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="net" type="462c0819:PsiDirectoryNode" />
-              <item name="micode" type="462c0819:PsiDirectoryNode" />
-              <item name="notes" type="462c0819:PsiDirectoryNode" />
-              <item name="gtask" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jike1701_asp" type="1abcf292:AndroidViewProjectNode" />
-              <item name="jike1701_asp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="net" type="462c0819:PsiDirectoryNode" />
-              <item name="micode" type="462c0819:PsiDirectoryNode" />
-              <item name="notes" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jike1701_asp" type="1abcf292:AndroidViewProjectNode" />
@@ -301,22 +179,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jike1701_asp" type="1abcf292:AndroidViewProjectNode" />
-              <item name="jike1701_asp" type="462c0819:PsiDirectoryNode" />
-              <item name="gradle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jike1701_asp" type="1abcf292:AndroidViewProjectNode" />
-              <item name="jike1701_asp" type="462c0819:PsiDirectoryNode" />
-              <item name="gradle" type="462c0819:PsiDirectoryNode" />
-              <item name="wrapper" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,16 +205,13 @@
       </list>
     </option>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0efc1372-9f39-45e2-85bd-91c011d76ed9" name="Default Changelist" comment="" />
-      <created>1609846105180</created>
+      <changelist id="963bc8a5-39a1-47a1-94dc-59b785feba20" name="Default Changelist" comment="" />
+      <created>1609937472138</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1609846105180</updated>
+      <updated>1609937472138</updated>
     </task>
     <servers />
   </component>
@@ -373,163 +240,38 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/gtask/data/MetaData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#2536#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmAlertActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" selection-start-line="15" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmInitReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#2499#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/AlarmReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#1078#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePicker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#16234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DateTimePickerDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#4084#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/DropdownMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#2318#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/FoldersListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#3022#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#53322#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteEditText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#9204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NoteItemData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#7413#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#39208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#5652#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesListItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#6296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/NotesPreferenceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#15441#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/OnPasswordInputFinish.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/account_dialog_title.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/micode/notes/ui/PasswordView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_account_text.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="57">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/current_password_head.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
