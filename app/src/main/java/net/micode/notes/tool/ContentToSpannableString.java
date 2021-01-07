@@ -16,6 +16,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,7 +25,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ContentToSpannableString {
-
 
     public static SpannableString Content2SpanStr(Context context, String noteContent){
         //这里的fakeNoteContent 是虚假content，是展示给用户的，因为真正的content中包含着的声音src变为可点击spannable之后会很丑

@@ -16,6 +16,7 @@
 
 package net.micode.notes.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -39,6 +40,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ImageSpan;
 import android.util.Log;
@@ -59,6 +61,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import androidx.core.app.ActivityCompat;
 
 import net.micode.notes.R;
 import net.micode.notes.data.Notes;
@@ -84,9 +88,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.micode.notes.tool.ContentToSpannableString;
-import net.micode.notes.tool.GlideImageEngine;
 import net.micode.notes.tool.UriToPathUtil;
-import android.media.MediaRecorder;
+
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 
@@ -174,6 +177,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private List<Uri> mSelected;
     private Button mAddpic;
     private Button mAddvoice;
+    private int REQUEST_PERMISSION_CODE;
 
     private MediaRecorder mediaRecorder = null;
     private boolean isStart = false;      //判断是否开始录音
@@ -182,44 +186,17 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.note_edit);
-
+        ActivityCompat.requestPermissions(NoteEditActivity.this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
+                REQUEST_PERMISSION_CODE);
         if (savedInstanceState == null && !initActivityState(getIntent())) {
             finish();
             return;
         }
         initResources();
 
-        mAddpic = findViewById(R.id.button_note_new_picture);
-        mAddpic.setOnClickListener(this);
 
-        /*final Button mAddpic = findViewById(R.id.button_note_new_picture);
-        mAddpic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //跳转到 图片选择界面 向当前editText中插入图片
-                callGallery();
-            }
-        });
 
-        final Button mAddvoice = findViewById(R.id.button_note_new_voice);
-        mAddvoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isStart){
-                    startRecord();
-                    mAddvoice.setText("停止录音");
-                    isStart = true;
-                    editText.append("\n");
-                }else{
-                    stopRecord();
-                    mAddvoice.setText("开始录音");
-                    isStart = false;
-                    //这是手机emoji上的一个图标
-                    editText.append("\uD83C\uDFA4");
-                    editText.append("\n");
-                }
-            }
-        });*/
     }
 
     /**
@@ -334,10 +311,11 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 .getTexAppearanceResource(mFontSizeId));
         if (mWorkingNote.getCheckListMode() == TextNote.MODE_CHECK_LIST) {
             switchToListMode(mWorkingNote.getContent());
-        } else {
-            /*SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
-            mNoteEditor.append(spannableString);*/
-            mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
+        } else {if(mWorkingNote.getContent()!= null){
+            SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
+            mNoteEditor.append(spannableString);
+        }else{ mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));}
+
             mNoteEditor.setSelection(mNoteEditor.getText().length());
         }
         for (Integer id : sBgSelectorSelectionMap.keySet()) {
@@ -437,9 +415,12 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         mNoteEditor = (EditText) findViewById(R.id.note_edit_view);
         mNoteEditorPanel = findViewById(R.id.sv_note_edit);
         mNoteBgColorSelector = findViewById(R.id.note_bg_color_selector);
-
-
-
+        //添加图片按钮点击事件，在onclick()里写具体方法
+        mAddpic = findViewById(R.id.button_note_new_picture);
+        mAddpic.setOnClickListener(this);
+        //添加录音按钮点击事件
+        mAddvoice = findViewById(R.id.button_note_new_voice);
+        mAddvoice.setOnClickListener(this);
 
         for (int id : sBgSelectorBtnsMap.keySet()) {
             ImageView iv = (ImageView) findViewById(id);
@@ -498,9 +479,24 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         int id = v.getId();
         //用于测试的写法
         if(id ==  R.id.button_note_new_picture){
-            createNewNote();
-        }
-        if (id == R.id.btn_set_bg_color) {
+            Log.d(TAG, "onClick: 尚未进入便失败");
+            callGallery();
+            Log.d(TAG, "onClick: 进入后便失败");
+        }else if(id == R.id.button_note_new_voice){
+            if(!isStart){
+                startRecord();
+                mAddvoice.setText("停止录音");
+                isStart = true;
+                mNoteEditor.append("\n");
+            }else{
+                stopRecord();
+                mAddvoice.setText("开始录音");
+                isStart = false;
+                //这是手机emoji上的一个图标
+                mNoteEditor.append("\uD83C\uDFA4");
+                mNoteEditor.append("\n");
+            }
+        } else if (id == R.id.btn_set_bg_color) {
             mNoteBgColorSelector.setVisibility(View.VISIBLE);
             findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(View.VISIBLE);
         } else if (sBgSelectorBtnsMap.containsKey(id)) {
@@ -848,9 +844,10 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 mWorkingNote.setWorkingText(mWorkingNote.getContent().replace(TAG_UNCHECKED + " ",
                         ""));
             }
-            /*SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
-            mNoteEditor.append(spannableString);*/
-            mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
+            SpannableString spannableString = ContentToSpannableString.Content2SpanStr(NoteEditActivity.this, mWorkingNote.getContent());
+            mNoteEditor.append(spannableString);
+            mNoteEditor.setMovementMethod(LinkMovementMethod.getInstance());
+           /* mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));*/
             mEditTextList.setVisibility(View.GONE);
             mNoteEditor.setVisibility(View.VISIBLE);
         }
@@ -950,7 +947,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 		openOptionsMenu();
 	}
 
-    /*private void callGallery(){
+    private void callGallery(){
         glideImageEngine = new GlideImageEngine();
 
         Matisse.from(NoteEditActivity.this)
@@ -994,8 +991,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                         ImageSpan span = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
                         spanStr.setSpan(span,0,spanStr.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         Log.d("spanString：",spanStr.toString());
-                        int cursor = editText.getSelectionStart();
-                        editText.getText().insert(cursor, spanStr);
+                        int cursor = mNoteEditor.getSelectionStart();
+                        mNoteEditor.getText().insert(cursor, spanStr);
                     }catch (Exception FileNotFoundException){
                         Log.d("异常","无法根据Uri找到图片资源");
                     }
@@ -1025,7 +1022,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
             mediaRecorder.setOutputFile(soundFile.getAbsolutePath());
 
-            editText.append("<voice src='" + soundFile.getAbsolutePath() + "'/>");
+            mNoteEditor.append("<voice src='" + soundFile.getAbsolutePath() + "'/>");
 
             try {
                 mediaRecorder.prepare();
@@ -1043,5 +1040,5 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             mediaRecorder.release();
             mediaRecorder = null;
         }
-    }*/
+    }
 }
