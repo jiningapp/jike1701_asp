@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/todoBook"
+        android:icon="@drawable/ic_todobook"
+
+        android:title="   计划本" />
+
+    <item
+
+        android:id="@+id/noteBook"
+        android:icon="@drawable/ic_notebook"
+        android:title="   便签簿" />
+
+</menu>
