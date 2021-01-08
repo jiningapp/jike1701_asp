@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--LitePal使用教程：https://www.jianshu.com/p/8035eb5da7a2-->
 <litepal>
-    <dbname value = "xiaoMI_db"></dbname>
+    <!--
+        Define the database name of your application.
+        By default each database name should be end with .db.
+        If you didn't name your database end with .db,
+        LitePal would plus the suffix automatically for you.
+        For example:
+        <dbname value="demo" />
+    -->
+    <!--若改变数据库名称，则原先数据库会被关闭，新的数据库更新到项目中使用-->
+    <dbname value = "newXiaoMi_db"></dbname>
+    <!--
+        Define the version of your database. Each time you want
+        to upgrade your database, the version tag would helps.
+        Modify the models you defined in the mapping tag, and just
+        make the version value plus one, the upgrade of database
+        will be processed automatically without concern.
+            For example:
+        <version value="1" />
+    -->
     <version value = "1"></version>
+
+    <!--
+        Define your models in the list with mapping tag, LitePal will
+        create tables for each mapping class. The supported fields
+        defined in models will be mapped into columns.
+        For example:
+        <list>
+            <mapping class="com.test.model.Reader" />
+            <mapping class="com.test.model.Magazine" />
+        </list>
+    -->
     <list>
-        <mapping class = "com.example.xiaomi.model.DoneThing"></mapping>
-        <mapping class = "com.example.xiaomi.model.Note"></mapping>
-        <mapping class = "com.example.xiaomi.model.NoteBook"></mapping>
-        <mapping class = "com.example.xiaomi.model.TodoBook"></mapping>
-        <mapping class = "com.example.xiaomi.model.UserInfo"></mapping>
-        <mapping class = "com.example.xiaomi.model.TodoThing"></mapping>
-        <mapping class = "com.example.xiaomi.model.LogDay"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.DoneThing"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.Note"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.NoteBook"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.TodoBook"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.UserInfo"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.TodoThing"></mapping>
+        <mapping class = "com.example.newXiaoMi.model.LogDay"></mapping>
     </list>
 </litepal>

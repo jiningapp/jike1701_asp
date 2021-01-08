@@ -6,13 +6,13 @@
     <data>
         <variable
             name="data"
-            type="com.example.xiaomi.ui.clock.CountDViewModel" />
+            type="com.example.newXiaoMi.ui.clock.CountDViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.clock.ClockFragment">
+        tools:context="com.example.newXiaoMi.ui.clock.ClockFragment">
 
         <ImageView
             android:id="@+id/cdPause"

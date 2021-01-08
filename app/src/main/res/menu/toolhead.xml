@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-
         android:id="@+id/logRec"
         android:icon="@drawable/ic_calendar"
         android:orderInCategory="100"
-
         app:showAsAction="always"
         android:title="TODO" />
 </menu>

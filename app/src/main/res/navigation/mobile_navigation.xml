@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.xiaomi.ui.home.HomeFragment"
-        android:label="小秘"
+        android:name="com.example.newXiaoMi.ui.home.HomeFragment"
+        android:label="主页"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/clockFragment"
-        android:name="com.example.xiaomi.ui.clock.ClockFragment"
+        android:name="com.example.newXiaoMi.ui.clock.ClockFragment"
         android:label="时钟"
         tools:layout="@layout/clock_fragment" >
         <action
@@ -23,12 +23,12 @@
     </fragment>
     <fragment
         android:id="@+id/todoFragment"
-        android:name="com.example.xiaomi.ui.todolist.TodoFragment"
-        android:label="TODO"
+        android:name="com.example.newXiaoMi.ui.todolist.TodoFragment"
+        android:label="待办事项"
         tools:layout="@layout/todo_fragment" />
     <fragment
         android:id="@+id/note"
-        android:name="com.example.xiaomi.ui.note.note"
+        android:name="com.example.newXiaoMi.ui.note.note"
         android:label="便签"
         tools:layout="@layout/note_fragment" >
         <action
@@ -37,12 +37,12 @@
     </fragment>
     <fragment
         android:id="@+id/logRec"
-        android:name="com.example.xiaomi.ui.logrecord.LogRecFragment"
+        android:name="com.example.newXiaoMi.ui.logrecord.LogRecFragment"
         android:label="记录"
         tools:layout="@layout/log_rec_fragment" />
     <fragment
         android:id="@+id/noteBook"
-        android:name="com.example.xiaomi.ui.notebook.NoteBookFragment"
+        android:name="com.example.newXiaoMi.ui.notebook.NoteBookFragment"
         android:label="便签簿"
         tools:layout="@layout/note_book_fragment" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/todoBook"
-        android:name="com.example.xiaomi.ui.todobook.TodoBookFragment"
+        android:name="com.example.newXiaoMi.ui.todobook.TodoBookFragment"
         android:label="计划本"
         tools:layout="@layout/todo_book_fragment" >
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/countDFragment"
-        android:name="com.example.xiaomi.ui.clock.CountDFragment"
+        android:name="com.example.newXiaoMi.ui.clock.CountDFragment"
         android:label="时钟"
         tools:layout="@layout/count_d_fragment" >
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNote"
-        android:name="com.example.xiaomi.ui.editnote.EditNote"
+        android:name="com.example.newXiaoMi.ui.editnote.EditNote"
         android:label="编辑"
         tools:layout="@layout/edit_note_fragment">
         <action
