@@ -12,14 +12,12 @@
    />
 
    <TextView
-
        android:layout_marginTop="8dp"
        android:paddingTop="10dp"
        android:paddingBottom="10dp"
        android:layout_marginBottom="8dp"
        android:paddingLeft="30dp"
        android:id="@+id/textView11"
-
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="TextView"

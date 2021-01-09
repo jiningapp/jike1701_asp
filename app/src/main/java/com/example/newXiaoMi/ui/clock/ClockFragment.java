@@ -168,7 +168,6 @@ public class ClockFragment extends Fragment {
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
                 NavController navController = Navigation.findNavController(buttonView);
                 navController.navigate(R.id.action_clockFragment_to_countDFragment);
             }

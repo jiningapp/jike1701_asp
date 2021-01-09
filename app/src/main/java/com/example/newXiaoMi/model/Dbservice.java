@@ -41,6 +41,11 @@ public class Dbservice {
             Note note3 = new Note();
             note3.setBookname("便签");
             note3.setContent("长按个人信息以修改其内容");
+            //提示便签4
+            Note note4 = new Note();
+            note4.setBookname("便签");
+            note4.setContent("如遇到问题，欢迎联系邮箱892417078@qq.com进行反馈");
+
             note3.save();
             //初始创建待办事项本
             TodoBook todoBook = new TodoBook();//初始创建待办事项本

@@ -229,7 +229,7 @@ public class CountDFragment extends DialogFragment implements TimePickerDialog.O
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Log.i("gong", TranNum.secToTime(hourOfDay * 3600 + minute * 60));
+        Log.i("计科1701_asp", TranNum.secToTime(hourOfDay * 3600 + minute * 60));
         mViewModel.setClockTime(TranNum.secToTime(hourOfDay * 3600 + minute * 60));
     }
 }
