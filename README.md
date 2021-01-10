@@ -1,4 +1,4 @@
-  ![小秘——个人时间管理工具](https://upload-images.jianshu.io/upload_images/19741117-ce7c1d2a9c885742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+  # 日程便签  
 
   开发工具：android studio；语言：java；数据库：LitePal
 
